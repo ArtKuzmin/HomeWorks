@@ -48,3 +48,15 @@ if (num % 2 == 0)
     Console.WriteLine ($"{num} is odd");
 }
 */
+/*
+//Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+Console.Write("Input integer: ");
+int num = Convert.ToInt32(Console.ReadLine());
+for (int i = 1; i <= num; i++)
+{
+    if (i % 2 == 0)
+    {
+        Console.Write(i);
+    }
+}
+*/
