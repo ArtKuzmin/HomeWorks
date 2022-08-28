@@ -35,3 +35,19 @@ int index = FindIndex(numIn);
 isNumberPalindrom(index, numIn);
 */
 
+/*
+//Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
+
+void ShowCubes(int number)
+{Console.WriteLine($"Cubes of integers before  {number} are: ");
+    for (int i =1; i <=number; i++)
+    {
+        Console.Write($" {i*i*i} ");
+    }
+
+}
+Console.Write("Input integer: ");
+int numIn = Convert.ToInt32(Console.ReadLine());
+ShowCubes(numIn);
+
+*/
