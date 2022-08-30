@@ -43,3 +43,31 @@ int index = FindIndex(numIn);
 int sum = isNumberPalindrom(index, numIn);
 Console.Write(sum);
 */
+
+
+/*
+//Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+
+
+int[] CreateArray(int n)
+{
+    int[] array = new int[n];
+    for (int i = 0; i < n; i++)
+    {
+        Console.Write($"Input {i} array element: ");
+        int t = Convert.ToInt32(Console.ReadLine());
+        array[i] = t;
+    }
+    return array;
+}
+void PrintArray(int[] array)
+{
+    Console.Write("[");
+    for (int i = 0; i < array.Length; i++)
+        Console.Write($"{array[i]}, ");
+    Console.Write("\b\b]");
+}
+Console.Write("Input array length: ");
+int n = Convert.ToInt32(Console.ReadLine());
+PrintArray(CreateArray(n));
+*/
