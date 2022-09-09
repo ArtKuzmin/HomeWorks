@@ -83,5 +83,55 @@ int j = Convert.ToInt32(Console.ReadLine());
 string answer = IsThereSuchIndex(Create2DArray(), i, j);
 Console.Write(answer);
 */
+
+/*
 //Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 
+int[,] Create2DArray()
+{
+    int m = new Random().Next(1, 20);
+    int n = new Random().Next(1, 20);
+
+    int[,] array = new int[m, n];
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = new Random().Next(0, 10);
+    return array;
+}
+
+void Print2DArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+double[] ColAverage(int[,] randomArray)
+{
+    Print2DArray(randomArray);
+    double[] colAverage = new double[randomArray.GetLength(1)];
+    for (int i = 0; i < randomArray.GetLength(1); i++)    
+        for (int j = 0; j < randomArray.GetLength(0); j++)        
+            colAverage[i] += Math.Round(((double)randomArray[j, i] / randomArray.GetLength(0)), 2);       
+    return colAverage;
+}
+void PrintArray(double[] array)
+{
+    Console.Write("[");
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]}; ");
+    }
+    Console.Write("\b\b]");
+    Console.WriteLine();
+}
+
+double[] colAverage = ColAverage(Create2DArray());
+PrintArray(colAverage);
+*/
