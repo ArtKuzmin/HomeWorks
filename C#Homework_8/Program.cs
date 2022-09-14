@@ -1,4 +1,5 @@
-﻿// Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
+﻿/*
+// Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 int[,] Create2DArray()
 {
@@ -56,8 +57,67 @@ int[,] randArray = Create2DArray();
 Print2DArray(randArray);
 SortArray(randArray);
 Print2DArray(randArray);
+*/
+
 
 // Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+
+int[,] Create2DArray()
+{
+    Console.Write("Input number of rows: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input number of columns: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input minimal value of array: ");
+    int minVal = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input maximum value of array: ");
+    int maxVal = Convert.ToInt32(Console.ReadLine());
+
+    int[,] array = new int[m, n];
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = new Random().Next(minVal, maxVal);
+    return array;
+}
+void Print2DArray(int[,] array)
+{
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+void MinSum(int[,] arr)
+{
+    int minSumRow = 0;
+    int[] rowSums = new int[arr.GetLength(1)];
+    for (int i = 0; i < arr.GetLength(0); i++)
+    {
+        minSumRow = 0;
+        for (int j = 0; j < arr.GetLength(1); j++)
+        {
+            minSumRow += arr[i, j];
+        }
+        rowSums[i] = minSumRow;
+    }
+    int indexMinSum = 0; // По-хорошему бы в этом месте разбить на два метода
+    for (int i = 1; i < rowSums.Length - 1; i++)
+    {
+        if (rowSums[i] < rowSums[indexMinSum])
+            indexMinSum = i;
+    }
+    Console.WriteLine($"Number of row with the minimal sum of it's elements is {indexMinSum + 1}");
+}
+
+int[,] randArray = Create2DArray();
+Print2DArray(randArray);
+MinSum(randArray);
 
 
 // Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
