@@ -59,7 +59,7 @@ SortArray(randArray);
 Print2DArray(randArray);
 */
 
-
+/*
 // Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
 int[,] Create2DArray()
@@ -118,12 +118,70 @@ void MinSum(int[,] arr)
 int[,] randArray = Create2DArray();
 Print2DArray(randArray);
 MinSum(randArray);
+*/
 
-
+/*
 // Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 
+int[,] Create2DArray()
+{
+    Console.Write("Input number of rows: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input number of columns: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input minimal value of array: ");
+    int minVal = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input maximum value of array: ");
+    int maxVal = Convert.ToInt32(Console.ReadLine());
 
-// .Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить 
+    int[,] array = new int[m, n];
+    for (int i = 0; i < array.GetLength(0); i++)
+        for (int j = 0; j < array.GetLength(1); j++)
+            array[i, j] = new Random().Next(minVal, maxVal);
+    return array;
+}
+void Print2DArray(int[,] array)
+{
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+
+void MultiplyMatrix(int[,] arrOne, int[,] arrTwo)
+{
+    if (arrOne.GetLength(1) == arrTwo.GetLength(0))
+    {
+        int[,] arrMult = new int[arrOne.GetLength(0), arrTwo.GetLength(1)];
+        for (int i = 0; i < arrOne.GetLength(0); i++)
+        {
+            for (int j = 0; j < arrOne.GetLength(1); j++)
+            {
+                for (int k = 0; k < arrOne.GetLength(0); k++)
+                    arrMult[i, j] += arrOne[i, k] * arrTwo[k, j];
+            }
+        }
+        Print2DArray(arrMult);
+    }
+    else Console.WriteLine("Matrix One can not be multiplied by Matrix Two");
+}
+
+int[,] arrOne = Create2DArray();
+Print2DArray(arrOne);
+int[,] arrTwo = Create2DArray();
+Print2DArray(arrTwo);
+MultiplyMatrix(arrOne, arrTwo);
+*/
+
+
+
+//Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить 
 //массив, добавляя индексы каждого элемента.
 
 
