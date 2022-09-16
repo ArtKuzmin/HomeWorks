@@ -1,4 +1,4 @@
-/*
+﻿/*
 // Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 int[,] Create2DArray()
@@ -180,10 +180,11 @@ MultiplyMatrix(arrOne, arrTwo);
 */
 
 
-
+/*
 //Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить 
 //массив, добавляя индексы каждого элемента.
-int[,,] Create3DArray()
+
+void Create3DArray()
 {
     Console.Write("Input value of 3rd dimension length: ");
     int m = Convert.ToInt32(Console.ReadLine());
@@ -191,38 +192,62 @@ int[,,] Create3DArray()
     int n = Convert.ToInt32(Console.ReadLine());
     Console.Write("Input number of columns: ");
     int l = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input minimal value of array: ");
-    int minVal = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Input maximum value of array: ");
-    int maxVal = Convert.ToInt32(Console.ReadLine());
-
     int[,,] array = new int[m, n, l];
-    for (int i = 0; i < array.GetLength(0); i++)
-        for (int j = 0; j < array.GetLength(1); j++)
-            for (int k = 0; k < array.GetLength(2); k++)
-                array[i, j, k] = new Random().Next(minVal, maxVal + 1);
-
-    return array;
+    if (array.GetLength(0) * array.GetLength(1) * array.GetLength(2) < 90)
+    {
+        for (int i = 0; i < array.GetLength(0); i++)
+            for (int j = 0; j < array.GetLength(1); j++)
+                for (int k = 0; k < array.GetLength(2); k++)
+                {
+                    array[i, j, k] = UniqueNumber();
+                }
+        Print3DArray(array);
+    }
+    else Console.WriteLine("Array has more than 90 elements, it cannot be filled with unique 2 digit numbers");
 }
 void Print3DArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
         Console.WriteLine();
-        Console.Write("-----------"); // так разделяются "слои" массива, но в качестве третьего измерения считается i "ось", строки:\
+        Console.Write("-----------"); // так разделяются "слои" массива
         for (int j = 0; j < array.GetLength(1); j++)
         {
             Console.WriteLine();
             for (int k = 0; k < array.GetLength(2); k++)
             {
-                Console.Write(array[i, j, k] + " "); // + " (" + i + ", "+ j + ", "+ k + ")  "); - вариант из примера етста в дз, где в скобках индексы показываются
+                Console.Write(array[i, j, k] + " ");
             }
         }
     }
     Console.WriteLine();
-}
 
-int[,,] arr3D = Create3DArray();
-Print3DArray(arr3D);
+}
+int UniqueNumber() // довольно редко, но метод все же выдает повторяющееся чмсло
+{
+    int rnd = new Random().Next(0, 90);
+    int uniqueRand = 0;
+    int[] twoDigitArr = new int[90];
+    twoDigitArr[0] = 9;
+    bool[] checkArr = new bool[90];
+    for (int i = 0; i < 90; i++)
+        twoDigitArr[i] = i + 10;
+    uniqueRand = twoDigitArr[rnd];
+    checkArr[rnd] = true;
+    while (checkArr[rnd])
+    {
+        int rnd2 = new Random().Next(0, 90);
+        uniqueRand = twoDigitArr[rnd2];
+        if (!checkArr[rnd2])
+        {
+            checkArr[rnd2] = true;
+            break;
+        }
+    }
+    return uniqueRand;
+}
+Create3DArray();
+
+*/
 
 // Напишите программу, которая заполнит спирально массив 4 на 4.
