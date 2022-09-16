@@ -1,4 +1,4 @@
-﻿/*
+/*
 // Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию элементы каждой строки двумерного массива.
 
 int[,] Create2DArray()
@@ -185,34 +185,37 @@ MultiplyMatrix(arrOne, arrTwo);
 //массив, добавляя индексы каждого элемента.
 int[,,] Create3DArray()
 {
-   // Console.Write("Input number of rows: ");
-    int m = 2;//Convert.ToInt32(Console.ReadLine());
-    //Console.Write("Input number of columns: ");
-    int n =2;// Convert.ToInt32(Console.ReadLine());
-   //Console.Write("Input number of 3rd dimension length: ");
-    int l = 2;//Convert.ToInt32(Console.ReadLine());
-   // Console.Write("Input minimal value of array: ");
-   // int minVal = Convert.ToInt32(Console.ReadLine());
-   // Console.Write("Input maximum value of array: ");
-   // int maxVal = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input value of 3rd dimension length: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input number of rows: ");
+    int n = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input number of columns: ");
+    int l = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input minimal value of array: ");
+    int minVal = Convert.ToInt32(Console.ReadLine());
+    Console.Write("Input maximum value of array: ");
+    int maxVal = Convert.ToInt32(Console.ReadLine());
 
     int[,,] array = new int[m, n, l];
     for (int i = 0; i < array.GetLength(0); i++)
         for (int j = 0; j < array.GetLength(1); j++)
             for (int k = 0; k < array.GetLength(2); k++)
-                array[i, j, k] = i+j+k;//new Random().Next(minVal, maxVal);
+                array[i, j, k] = new Random().Next(minVal, maxVal + 1);
+
     return array;
 }
 void Print3DArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
-    { Console.WriteLine();
+    {
+        Console.WriteLine();
+        Console.Write("-----------"); // так разделяются "слои" массива, но в качестве третьего измерения считается i "ось", строки:\
         for (int j = 0; j < array.GetLength(1); j++)
         {
             Console.WriteLine();
             for (int k = 0; k < array.GetLength(2); k++)
-            {                
-                Console.Write(array[i, j, k] + " (" + i + ", "+ j + ", "+ k + ")  ");
+            {
+                Console.Write(array[i, j, k] + " "); // + " (" + i + ", "+ j + ", "+ k + ")  "); - вариант из примера етста в дз, где в скобках индексы показываются
             }
         }
     }
