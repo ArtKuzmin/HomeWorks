@@ -223,7 +223,7 @@ void Print3DArray(int[,,] array)
     Console.WriteLine();
 
 }
-int UniqueNumber() // довольно редко, но метод все же выдает повторяющееся чмсло
+int UniqueNumber() 
 {
     int rnd = new Random().Next(0, 90);
     int uniqueRand = 0;
@@ -234,20 +234,92 @@ int UniqueNumber() // довольно редко, но метод все же �
         twoDigitArr[i] = i + 10;
     uniqueRand = twoDigitArr[rnd];
     checkArr[rnd] = true;
-    while (checkArr[rnd])
+    if (checkArr[rnd])
     {
-        int rnd2 = new Random().Next(0, 90);
-        uniqueRand = twoDigitArr[rnd2];
-        if (!checkArr[rnd2])
+        while (checkArr[rnd])
         {
-            checkArr[rnd2] = true;
-            break;
+            int rnd2 = new Random().Next(0, 90);
+            uniqueRand = twoDigitArr[rnd2];
+            if (!checkArr[rnd2])
+            {
+                checkArr[rnd2] = true;
+                break;
+            }
         }
     }
+    else checkArr[rnd] = true;
     return uniqueRand;
 }
 Create3DArray();
-
 */
 
+
+/*
 // Напишите программу, которая заполнит спирально массив 4 на 4.
+
+int[,] Create2DArray()
+{
+    Console.Write("Input number of rows and columns: ");
+    int m = Convert.ToInt32(Console.ReadLine());
+    int[,] array = new int[m, m];
+    int count = 0;
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(0); j++)
+        {
+            array[i, j] = j + 1; // Не понимаю, почему при подстановке именно в этот цикл count + 1 вместо j + 1 после первой строки к переменной добавляется 21.
+            count = array[i, j];
+        }
+        for (int j = 1; j < array.GetLength(0); j++)
+        {
+            array[j, i] = count + 1;
+            count = array[j, i];
+        }
+    }
+    for (int i = array.GetLength(0) - 1; i >= array.GetLength(0) - 1; i--)
+    {
+        for (int j = array.GetLength(0) - 2; j >= 0; j--)
+        {
+            array[i, j] = count + 1;
+            count = array[i, j];
+        }
+        for (int j = array.GetLength(0) - 2; j > 0; j--)
+        {
+            array[j, 0] = count + 1;
+            count = array[j, 0];
+        }
+    }
+    for (int i = 1; i < array.GetLength(0) - 1; i++)
+    {
+        for (int j = 1; j < array.GetLength(0) - 1; j++)
+        {
+            array[i, j] = count + 1;
+            count = array[i, j];
+        }
+        for (int j = array.GetLength(0) - 2; j < array.GetLength(0) - 2; j++)
+        {
+            array[j, array.GetLength(0) - 2] = count + 1;
+            count = array[j, i];
+        }
+    }
+    return array;
+}
+void Print2DArray(int[,] array)
+{
+
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10)
+                Console.Write("0" + array[i, j] + " ");
+            else Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine();
+    }
+    Console.WriteLine();
+}
+int[,] arr = Create2DArray();
+Print2DArray(arr);
+*/
